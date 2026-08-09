@@ -12,29 +12,23 @@
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <style>
         :root {
-            --bg-base: #0B0F19;
+            --bg-base: #0a0f1d;
             --bg-surface: #111827;
-            --bg-card: rgba(17, 24, 39, 0.7);
-            --bg-card-hover: rgba(30, 41, 59, 0.8);
+            --bg-card: rgba(17, 24, 39, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
             
-            --primary: #6366F1;
-            --primary-glow: rgba(99, 102, 241, 0.25);
-            --secondary: #10B981;
-            --accent: #38BDF8;
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --secondary: #06b6d4;
+            --accent: #10b981;
             
-            --text-main: #F9FAFB;
-            --text-muted: #9CA3AF;
-            --text-dim: #6B7280;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
             
-            --border: rgba(255, 255, 255, 0.08);
-            --border-highlight: rgba(99, 102, 241, 0.3);
-            
-            --font-main: 'Readex Pro', 'Plus Jakarta Sans', sans-serif;
-            --radius-lg: 20px;
-            --radius-md: 12px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -42,101 +36,54 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
+            font-family: 'Readex Pro', 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
             background-color: var(--bg-base);
             color: var(--text-main);
-            font-family: var(--font-main);
             line-height: 1.7;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.12) 0%, transparent 40%);
+            background-attachment: fixed;
         }
 
-        /* Ambient Background Glows */
-        .ambient-glow {
+        /* Header / Navbar */
+        header {
             position: fixed;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--primary-glow) 0%, rgba(0,0,0,0) 70%);
-            top: -200px;
-            right: -200px;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .ambient-glow-2 {
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(0,0,0,0) 70%);
-            bottom: -100px;
-            left: -100px;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Glassmorphism Classes */
-        .glass {
-            background: var(--bg-card);
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 15, 29, 0.85);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .glass-pill {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-        }
-
-        /* Layout Container */
-        .container {
+        .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Navbar */
-        nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 48px);
-            max-width: 1100px;
-            z-index: 1000;
-            padding: 12px 28px;
-            border-radius: 100px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1.2rem 2rem;
         }
 
         .logo {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: var(--text-main);
-            text-decoration: none;
+            background: linear-gradient(135deg, var(--text-main), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .logo-badge {
-            width: 10px;
-            height: 10px;
-            background: var(--secondary);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--secondary);
+            gap: 0.5rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 2rem;
             list-style: none;
         }
 
@@ -144,744 +91,521 @@
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.95rem;
+            font-weight: 500;
             transition: var(--transition);
         }
 
         .nav-links a:hover {
-            color: var(--text-main);
-        }
-
-        .cta-btn {
-            background: linear-gradient(135deg, var(--primary), #4F46E5);
-            color: #fff;
-            padding: 10px 22px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 20px var(--primary-glow);
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(99, 102, 241, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border-highlight);
-            color: var(--text-main);
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background: rgba(99, 102, 241, 0.1);
-            border-color: var(--primary);
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #10B981, #059669);
-            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25);
-        }
-
-        .btn-whatsapp:hover {
-            box-shadow: 0 6px 25px rgba(16, 185, 129, 0.4);
+            color: var(--primary);
         }
 
         /* Hero Section */
         .hero {
-            padding-top: 180px;
-            padding-bottom: 100px;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 60px;
+            min-height: 100vh;
+            display: flex;
             align-items: center;
+            padding: 8rem 2rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .badge-status {
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            color: var(--primary);
             font-size: 0.85rem;
-            color: var(--accent);
-            margin-bottom: 24px;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
         }
 
-        .hero-title {
-            font-size: 3.2rem;
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        h1 {
+            font-size: 3rem;
             font-weight: 800;
             line-height: 1.25;
-            margin-bottom: 24px;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #A5B4FC, var(--accent), var(--secondary));
+        .highlight-text {
+            background: linear-gradient(135deg, #818cf8, #22d3ee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-desc {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 36px;
-            font-weight: 300;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border);
-        }
-
-        .stat-item h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .stat-item p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        .profile-card {
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .profile-img-wrap {
-            width: 100%;
-            height: 380px;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            background: linear-gradient(135deg, #1E293B, #0F172A);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .profile-avatar {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-        }
-
-        .floating-pill {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            left: 20px;
-            padding: 16px;
-            border-radius: var(--radius-md);
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .pill-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(99, 102, 241, 0.15);
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .hero-intro {
             font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            line-height: 1.8;
+            border-right: 3px solid var(--primary);
+            padding-right: 1.2rem;
         }
 
-        /* Section Header */
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 10px 25px -5px var(--primary-glow);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px var(--primary-glow);
+        }
+
+        .btn-outline {
+            padding: 0.9rem 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Case Studies Section (Full Dedicated View) */
+        .case-studies-section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .section-header {
+            margin-bottom: 4rem;
             text-align: center;
-            max-width: 650px;
-            margin: 0 auto 60px auto;
         }
 
-        .section-tag {
-            color: var(--primary);
-            font-size: 0.9rem;
+        .section-header h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .case-study-full-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(12px);
+            transition: var(--transition);
+        }
+
+        .case-study-full-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .case-title-area h3 {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-tag {
+            font-size: 0.85rem;
+            color: var(--secondary);
             font-weight: 600;
             text-transform: uppercase;
-            margin-bottom: 8px;
-            display: block;
+            letter-spacing: 1px;
         }
 
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            margin-bottom: 120px;
-        }
-
-        .service-card {
-            padding: 36px 28px;
-            border-radius: var(--radius-lg);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--border-highlight);
-            background: var(--bg-card-hover);
-        }
-
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(56, 189, 248, 0.1));
+        .case-metrics-badge {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
             color: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 24px;
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Case Studies Section */
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 24px;
-            margin-bottom: 120px;
-        }
-
-        .case-card {
-            padding: 32px;
-            border-radius: var(--radius-lg);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: var(--transition);
-        }
-
-        .case-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--border-highlight);
-        }
-
-        .case-metric {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .case-title {
-            font-size: 1.25rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .case-desc {
+        .case-grid-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .case-grid-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .case-info h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .case-info p {
             color: var(--text-muted);
+            margin-bottom: 1.5rem;
             font-size: 0.95rem;
-            margin-bottom: 24px;
+            line-height: 1.8;
         }
 
-        /* Timeline */
-        .timeline {
+        .case-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-list li {
+            position: relative;
+            padding-right: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .case-list li::before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Mock Image / Screenshots Showcase */
+        .visual-evidence {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            padding: 1.5rem;
+        }
+
+        .visual-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .image-placeholder-box {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+            border-radius: 12px;
+            border: 1px dashed rgba(255, 255, 255, 0.15);
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            margin-bottom: 120px;
-        }
-
-        .timeline-card {
-            padding: 32px;
-            border-radius: var(--radius-lg);
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 24px;
-        }
-
-        .timeline-date {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-        }
-
-        .timeline-content h4 {
-            font-size: 1.25rem;
-            margin-bottom: 6px;
-        }
-
-        .timeline-company {
-            color: var(--primary);
-            font-size: 0.95rem;
-            margin-bottom: 14px;
-            display: block;
-        }
-
-        .timeline-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tech-tag {
-            padding: 4px 12px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border);
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Skills */
-        .skills-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            margin-bottom: 120px;
-        }
-
-        .skill-box {
-            padding: 24px;
-            border-radius: var(--radius-md);
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-        }
-
-        .skill-box h5 {
-            font-size: 1.05rem;
-            margin-bottom: 16px;
-            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 10px;
-        }
-
-        .skill-box h5 i {
-            color: var(--secondary);
-        }
-
-        /* Contact */
-        .contact-card {
-            padding: 60px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(30, 41, 59, 0.6));
-            border: 1px solid var(--border-highlight);
             text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .contact-card h2 {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
-
-        .contact-card p {
+            padding: 1rem;
             color: var(--text-muted);
-            max-width: 550px;
-            margin: 0 auto 36px auto;
-        }
-
-        .contact-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 15, 25, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-highlight);
-            border-radius: var(--radius-lg);
-            max-width: 700px;
-            width: 100%;
-            padding: 40px;
-            position: relative;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            cursor: pointer;
+            gap: 0.8rem;
             transition: var(--transition);
         }
 
-        .close-modal:hover {
+        .image-placeholder-box i {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .image-placeholder-box span {
+            font-size: 0.9rem;
+            font-weight: 500;
             color: var(--text-main);
         }
 
-        /* Footer */
+        /* Footer & Contact Section */
         footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: var(--text-dim);
-            font-size: 0.9rem;
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-color);
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
         }
 
-        @media (max-width: 992px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 140px;
-            }
-            .timeline-card {
-                grid-template-columns: 1fr;
-            }
-            .nav-links {
-                display: none;
-            }
-            .contact-card {
-                padding: 40px 20px;
-            }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .contact-email-btn {
+            padding: 0.9rem 2rem;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid var(--primary);
+            color: #fff;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .contact-email-btn:hover {
+            background: var(--primary);
+            box-shadow: 0 10px 20px var(--primary-glow);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="ambient-glow"></div>
-    <div class="ambient-glow-2"></div>
-
-    <!-- Navigation -->
-    <nav class="glass">
-        <a href="#" class="logo">
-            <span class="logo-badge"></span>
-            صابرين مختار
-        </a>
-        <ul class="nav-links">
-            <li><a href="#about">عن الخبرة</a></li>
-            <li><a href="#services">التخصصات</a></li>
-            <li><a href="#cases">دراسات الحالة</a></li>
-            <li><a href="#experience">المسار المهني</a></li>
-            <li><a href="#skills">المهارات التقنية</a></li>
-        </ul>
-        <a href="#contact" class="cta-btn">تواصل معي</a>
-    </nav>
-
-    <!-- Main Container -->
-    <main class="container">
-
-        <!-- Hero Section -->
-        <section class="hero" id="about">
-            <div class="hero-content">
-                <div class="badge-status glass-pill">
-                    <i class="fa-solid fa-circle-dot" style="color: var(--secondary);"></i>
-                    متاحة لاستشارات وتطوير النمو الرقمي
-                </div>
-                <h1 class="hero-title">
-                    أبني معماريات <span class="gradient-text">المستخدم والبحث الذكي</span> لنمو متصاعد
-                </h1>
-                <p class="hero-desc">
-                    خبير أول في SEO و GEO و LLMO وهندسة تجارب المستخدم (UX Architecture). أدمج بين الحلول البرمجية المتقدمة واستراتيجيات محركات البحث الذكية للوصول إلى أعلى معدلات التحويل والأداء.
-                </p>
-                
-                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                    <a href="#contact" class="cta-btn" style="padding: 12px 30px; font-size: 1rem;">ابدأ مشروعك الآن</a>
-                    <a href="#cases" class="cta-btn btn-outline" style="padding: 12px 30px; font-size: 1rem;">استكشف دراسات الحالة</a>
-                </div>
-
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <h3>+6</h3>
-                        <p>سنوات خبرة متخصصة</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>100%</h3>
-                        <p>تحسين تجارب ونمو رقمي</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>GEO & AI</h3>
-                        <p>محركات البحث الجيل الجديد</p>
-                    </div>
-                </div>
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-chart-line"></i> صابرين مختار
             </div>
-
-            <div class="hero-media">
-                <div class="profile-card glass">
-                    <div class="profile-img-wrap">
-                        <div class="profile-avatar">
-                            <i class="fa-solid fa-user-gear"></i>
-                        </div>
-                    </div>
-                    <div class="floating-pill">
-                        <div class="pill-icon">
-                            <i class="fa-solid fa-chart-line"></i>
-                        </div>
-                        <div>
-                            <h5 style="font-size: 0.95rem; font-weight: 600;">تحسين محركات البحث والذكاء الاصطناعي</h5>
-                            <p style="font-size: 0.8rem; color: var(--text-muted);">SEO • GEO • LLMO • Web UX</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services">
-            <div class="section-header">
-                <span class="section-tag">مجالات التميز</span>
-                <h2 class="section-title">حلول متكاملة لهندسة الظهور والنمو</h2>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card glass">
-                    <div class="service-icon">
-                        <i class="fa-solid fa-magnifying-glass-chart"></i>
-                    </div>
-                    <h3>SEO & GEO Optimization</h3>
-                    <p>تحسين الظهور العضوي وتجهيز المواقع لمحركات البحث التقليدية والجيل الجديد القائم على الذكاء الاصطناعي (Generative Engine Optimization).</p>
-                </div>
-
-                <div class="service-card glass">
-                    <div class="service-icon">
-                        <i class="fa-solid fa-cubes-stacked"></i>
-                    </div>
-                    <h3>UX Architecture & Web Dev</h3>
-                    <p>تصميم وتطوير هيكلية تجربة المستخدم والتأكد من انسيابية التصفح والسرعة البرمجية بأعلى معايير الـ Frontend والـ Performance.</p>
-                </div>
-
-                <div class="service-card glass">
-                    <div class="service-icon">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
-                    <h3>LLM Search Optimization</h3>
-                    <p>تهيئَة المحتوى والبيانات المنظمة (Structured Data) لتتلاءم مع نماذج الذكاء الاصطناعي وتضمن الظهور كإجابة موثوقة في النماذج الذكية.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Case Studies Section -->
-        <section id="cases">
-            <div class="section-header">
-                <span class="section-tag">دراسات الحالة</span>
-                <h2 class="section-title">نتائج حقيقية ونمو مثبت بالأرقام</h2>
-            </div>
-
-            <div class="cases-grid">
-                <div class="case-card glass">
-                    <div>
-                        <div class="case-metric">
-                            <i class="fa-solid fa-arrow-up-right-dots"></i>
-                            +180%
-                        </div>
-                        <h3 class="case-title">نمو الحركة العضوية لتطبيق سياحي</h3>
-                        <p class="case-desc">إعادة هيكلة الـ Technical SEO وتحسين سرعة الصفحة والبيانات المنظمة لتطبيق وموقع سفر سياحي إقليمي.</p>
-                    </div>
-                    <button onclick="openModal('case1')" class="cta-btn btn-outline" style="width: 100%;">عرض التفاصيل</button>
-                </div>
-
-                <div class="case-card glass">
-                    <div>
-                        <div class="case-metric">
-                            <i class="fa-solid fa-robot"></i>
-                            Top #1
-                        </div>
-                        <h3 class="case-title">الظهور في إجابات ChatGPT و Perplexity</h3>
-                        <p class="case-desc">تطبيق استراتيجية GEO & LLMO للظهور كإجابة أساسية موثوقة في محركات البحث الذكية للقطاع العقاري.</p>
-                    </div>
-                    <button onclick="openModal('case2')" class="cta-btn btn-outline" style="width: 100%;">عرض التفاصيل</button>
-                </div>
-
-                <div class="case-card glass">
-                    <div>
-                        <div class="case-metric">
-                            <i class="fa-solid fa-bolt"></i>
-                            98/100
-                        </div>
-                        <h3 class="case-title">تحسين أداء وتجربة مستخدم منصة ضيافة</h3>
-                        <p class="case-desc">إعادة بناء معمارية تجربة المستخدم (UX) وتحسين Core Web Vitals لرفع معدل التحويل والمبيعات.</p>
-                    </div>
-                    <button onclick="openModal('case3')" class="cta-btn btn-outline" style="width: 100%;">عرض التفاصيل</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience Timeline -->
-        <section id="experience">
-            <div class="section-header">
-                <span class="section-tag">المسار المهني</span>
-                <h2 class="section-title">خبرات قيادية في النمو الرقمي</h2>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-card glass">
-                    <div class="timeline-date">2020 - الحاضر</div>
-                    <div class="timeline-content">
-                        <h4>Senior Digital Growth & SEO Architecture Specialist</h4>
-                        <span class="timeline-company">استشارات ومشاريع كبرى (السعودية والإقليمية)</span>
-                        <p class="timeline-desc">قيادة عمليات التدقيق التقني (Technical Audits)، استراتيجيات الكلمات المفتاحية، وبناء معمارية المواقع لضمان أعلى معدلات الأداء والظهور العضوي وتجربة المستخدم.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Technical SEO</span>
-                            <span class="tech-tag">GEO Strategy</span>
-                            <span class="tech-tag">UX Design</span>
-                            <span class="tech-tag">Data Analytics</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technical Skills -->
-        <section id="skills">
-            <div class="section-header">
-                <span class="section-tag">القدرات التقنية</span>
-                <h2 class="section-title">الأدوات والتقنيات التي أعتمدها</h2>
-            </div>
-
-            <div class="skills-wrapper">
-                <div class="skill-box">
-                    <h5><i class="fa-solid fa-code"></i> Frontend & UX</h5>
-                    <div class="tech-tags" style="margin-top: 12px;">
-                        <span class="tech-tag">HTML5 / CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">UX Design</span>
-                    </div>
-                </div>
-
-                <div class="skill-box">
-                    <h5><i class="fa-solid fa-chart-pie"></i> SEO & GEO Tools</h5>
-                    <div class="tech-tags" style="margin-top: 12px;">
-                        <span class="tech-tag">Search Console</span>
-                        <span class="tech-tag">Schema.org</span>
-                        <span class="tech-tag">Technical Audits</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="contact-card">
-                <h2>جاهزة لنقل مشروعك لمستوى جديد؟</h2>
-                <p>سواء كنت تبحث عن تحسين محركات البحث الذكية (GEO/SEO) أو إعادة بناء تجربة المستخدم بطريقة هندسية مبتكرة، يسعدني التواصل معك.</p>
-                <div class="contact-buttons">
-                    <a href="https://wa.me/201000000000" target="_blank" class="cta-btn btn-whatsapp" style="padding: 14px 32px; font-size: 1rem;">
-                        <i class="fa-brands fa-whatsapp"></i> واتساب
-                    </a>
-                    <a href="mailto:sapreen2018@gmail.com" class="cta-btn" style="padding: 14px 32px; font-size: 1rem;">
-                        <i class="fa-solid fa-envelope"></i> البريد الإلكتروني
-                    </a>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Case Details Modals -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div id="modal-body"></div>
+            <ul class="nav-links">
+                <li><a href="#hero">الرئيسية</a></li>
+                <li><a href="#cases">دراسات الحالة والنتائج</a></li>
+                <li><a href="#contact">التواصل</a></li>
+            </ul>
         </div>
-    </div>
+    </header>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>جميع الحقوق محفوظة © صابرين مختار - Senior SEO, GEO & UX Architecture Specialist</p>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <span class="badge-dot"></span> Senior SEO, GEO & UX Architecture Specialist
+            </div>
+            <h1>مُتخصصة في تقاطع <span class="highlight-text">تصدر محركات البحث</span>، الذكاء الاصطناعي، وهندسة تجربة المستخدم</h1>
+            
+            <!-- Updated Opening Statement -->
+            <p class="hero-intro">
+                أُحَوّل التواجد الرقمي للمؤسسات إلى محركات نمو استراتيجية متصدرة؛ عبر الدمج الدقيق بين حلول SEO التقنية العميقة، وتهيئة محركات الذكاء الاصطناعي (GEO / AIEO)، وإعادة هندسة واجهات التفاعل (UX Architecture) لرفع معدلات التحويل وإطالة زمن بقاء الزوار.
+            </p>
+            
+            <div class="cta-group">
+                <a href="#cases" class="btn-primary">
+                    استكشف دراسات الحالة والنتائج <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <a href="mailto:sapriin2020@gmail.com" class="btn-outline">
+                    تواصل معي مباشرة
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dedicated Full Page Case Studies Section -->
+    <section class="case-studies-section" id="cases">
+        <div class="section-header">
+            <h2>دراسات الحالة والتقدم المحقق للمواقع</h2>
+            <p>سجل حافل بالتطوير الرقمي والنمو العضوي المستدام عبر مشاريع حية في السوق السعودي والخليجي</p>
+        </div>
+
+        <!-- Case Study 1: Happy Life -->
+        <div class="case-study-full-card">
+            <div class="case-header">
+                <div class="case-title-area">
+                    <span class="case-tag">قطاع السياحة والسفر - KSA</span>
+                    <h3>شركة هابي لايف للسياحة (Happy Life for Travel)</h3>
+                </div>
+                <div class="case-metrics-badge">
+                    <i class="fa-solid fa-arrow-trend-up"></i> +180% نمو الترافيك العضوي & Rich Snippets
+                </div>
+            </div>
+
+            <div class="case-grid-body">
+                <div class="case-info">
+                    <h4><i class="fa-solid fa-bullseye"></i> التحديات والاستراتيجية المتبعة</h4>
+                    <p>كان الهدف هو السيطرة على الكلمات المفتاحية التنافسية لموسم السياحة في المملكة العربية السعودية، وتجاوز خسارة الظهور المباشر أمام المنافسين الكبار.</p>
+                    
+                    <h4><i class="fa-solid fa-gears"></i> الإجراءات والحلول التقنية</h4>
+                    <ul class="case-list">
+                        <li>بناء هيكلية Schema Markup متقدمة للرحلات (TouristAttraction & TravelAgency).</li>
+                        <li>إعادة تحسين الميتا تاج الهيكلية والبيانات المنظمة لترشيح الصفحات.</li>
+                        <li>تطبيق تكتيكات GEO للظهور في محركات الذكاء الاصطناعي (ChatGPT Search & Perplexity).</li>
+                    </ul>
+                </div>
+
+                <div class="visual-evidence">
+                    <div class="visual-title">
+                        <span><i class="fa-solid fa-chart-area"></i> إثباتات النمو والنتائج الرقمية</span>
+                        <small>Google Search Console / GA4</small>
+                    </div>
+                    <div class="image-placeholder-box">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        <span>تصدر إجابات الذكاء الاصطناعي وميزات Snippets المباشرة</span>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">نمو ملحوظ في نسبة النقر إلى الظهور (CTR) وتصدر الكلمات التنافسية للرحلات السياحية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study 2: Jazeel Agency -->
+        <div class="case-study-full-card">
+            <div class="case-header">
+                <div class="case-title-area">
+                    <span class="case-tag">التسويق الرقمي وبناء الواجهات</span>
+                    <h3>وكالة جزيل للتسويق الرقمي (Jazeel Agency)</h3>
+                </div>
+                <div class="case-metrics-badge">
+                    <i class="fa-solid fa-user-check"></i> تحسين مدة البقاء وانخفاض معدل الارتداد
+                </div>
+            </div>
+
+            <div class="case-grid-body">
+                <div class="case-info">
+                    <h4><i class="fa-solid fa-bullseye"></i> التحديات والاستراتيجية المتبعة</h4>
+                    <p>معالجة ارتفاع معدل الارتداد (Bounce Rate) لصفحات العملاء المكتظة بالنصوص غير المنظمة، وتراجع ترتيب الأثوريتي أمام المنافسين.</p>
+                    
+                    <h4><i class="fa-solid fa-gears"></i> الإجراءات والحلول التقنية</h4>
+                    <ul class="case-list">
+                        <li>إعادة هيكلة تجربة المستخدم البصرية (Visual Hierarchy) وتقسيم المحتوى إلى بطاقات تفاعلية.</li>
+                        <li>تنفيذ فحص تقني عميق (Deep Technical SEO Audit) وتأمين ثغرات الفهرسة.</li>
+                        <li>بناء استراتيجية Backlinks قوية وموجهة لرفع أثوريتي الموقع في مصر والسعودية.</li>
+                    </ul>
+                </div>
+
+                <div class="visual-evidence">
+                    <div class="visual-title">
+                        <span><i class="fa-solid fa-laptop-code"></i> إعادة هيكلة الواجهات والـ Page Experience</span>
+                        <small>ePower / WordPress CMS</small>
+                    </div>
+                    <div class="image-placeholder-box">
+                        <i class="fa-solid fa-bezier-curve"></i>
+                        <span>تحول بصري كامل في الواجهات وزيادة معدل التفاعل Dwell Time</span>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">انخفاض كبير في معدل الارتداد مع تحسن مؤشرات Core Web Vitals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study 3: Mathaq Noon -->
+        <div class="case-study-full-card">
+            <div class="case-header">
+                <div class="case-title-area">
+                    <span class="case-tag">قطاع الأغذية والتجارة</span>
+                    <h3>مذاق نون (Mathaq Noon)</h3>
+                </div>
+                <div class="case-metrics-badge">
+                    <i class="fa-solid fa-link"></i> أثوريتي عالي +90 DA في أوقات قياسية
+                </div>
+            </div>
+
+            <div class="case-grid-body">
+                <div class="case-info">
+                    <h4><i class="fa-solid fa-bullseye"></i> التحديات والاستراتيجية المتبعة</h4>
+                    <p>تعزيز الظهور الرقمي وتصدر النتائج العضوية من خلال بناء شبكة روابط خلفية ذات موثوقية عالية جداً ونسبة جودة ممتازة.</p>
+                    
+                    <h4><i class="fa-solid fa-gears"></i> الإجراءات والحلول التقنية</h4>
+                    <ul class="case-list">
+                        <li>نشر وتوزيع الروابط على منصات عالمية موثوقة (Medium, Google Sites, Zoho, Tilda).</li>
+                        <li>المحافظة على نسبة Spam Rate منخفضة جداً (1% فقط) لضمان أمان الموقع في خوارزميات البحث.</li>
+                        <li>استهداف الكلمات المفتاحية الطويلة (Long-Tail Keywords) لدعم الفهرسة السريعة.</li>
+                    </ul>
+                </div>
+
+                <div class="visual-evidence">
+                    <div class="visual-title">
+                        <span><i class="fa-solid fa-shield-halved"></i> ملف الروابط الخلفية والأثوريتي</span>
+                        <small>Backlink Quality Audit</small>
+                    </div>
+                    <div class="image-placeholder-box">
+                        <i class="fa-solid fa-network-wired"></i>
+                        <span>شبكة باك لينكات عالية القوة بنسبة أمان مرتفعة</span>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">تحقيق أثوريتي مستدام وتعزيز حضور العلامة التجارية في النتائج العضوية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Contact Section -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div>
+                <h3>صابرين مختار</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.3rem;">Senior SEO, SEM, GEO & UX Architecture Specialist</p>
+            </div>
+            
+            <!-- Email Only Button (No WhatsApp) -->
+            <div>
+                <a href="mailto:sapriin2020@gmail.com" class="contact-email-btn">
+                    <i class="fa-solid fa-envelope"></i> التواصل عبر البريد الإلكتروني
+                </a>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2026 صابرين مختار. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
-    <script>
-        const caseDetails = {
-            case1: {
-                title: "تحسين أداء وحركة المرور لمنصة سياحية",
-                metric: "+180% زيادة في الحركة العضوية",
-                details: "تم تنفيذ استراتيجية شاملة تشمل إعادة تنظيف الأخطاء البرمجية (Technical SEO Audits)، وبناء هيكلية معمارية المحتوى، وتطبيق أحدث معايير Core Web Vitals مع إضافة Schema.org المتقدمة لتسهيل فهم محركات البحث للخدمات."
-            },
-            case2: {
-                title: "استراتيجية GEO للظهور في المحركات الذكية",
-                metric: "الظهور المباشر في AI Overview & Perplexity",
-                details: "تطبيق استراتيجية Generative Engine Optimization عبر إعداد كيانات المحتوى (Entities) وتزويد نماذج الذكاء الاصطناعي ببينات موثوقة ومبسطة، مما أدى لترشيح العلامة التجارية كأول خيار في ردود ChatGPT الذكية."
-            },
-            case3: {
-                title: "هندسة تجربة المستخدم لمعمارية ضيافة",
-                metric: "ارتفاع معدل التحويل بنسبة 45%",
-                details: "إعادة تصميم مسار رحلة المستخدم (User Journey) وتبسيط خطوات الحجز، مع تعديل كود الـ Frontend لتحقيق أقصى سرعة تحميل وأفضل استجابة على الهواتف الذكية."
-            }
-        };
-
-        function openModal(caseKey) {
-            const data = caseDetails[caseKey];
-            const modalBody = document.getElementById('modal-body');
-            modalBody.innerHTML = `
-                <span class="section-tag">${data.metric}</span>
-                <h2 style="font-size: 1.8rem; margin-bottom: 16px;">${data.title}</h2>
-                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">${data.details}</p>
-            `;
-            document.getElementById('modal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-    </script>
 </body>
 </html>
