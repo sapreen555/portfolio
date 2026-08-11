@@ -163,6 +163,205 @@
             border-top: 1px solid var(--border-color);
             margin-top: 50px;
         }
+
+        /* --- HL SLIDER STYLES --- */
+        .hl-slider-container {
+            direction: rtl;
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 1200px;
+            margin: 30px auto;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            background: #0b1e36;
+        }
+
+        .hl-slides-wrapper {
+            display: flex;
+            width: 300%;
+            height: auto;
+            animation: hl_slide_animation 20s infinite ease-in-out;
+        }
+
+        .hl-slide {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            opacity: 0.18;
+            filter: blur(2px);
+        }
+
+        .hl-slide:nth-child(1) .slide-bg { background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200&auto=format&fit=crop'); }
+        .hl-slide:nth-child(2) .slide-bg { background-image: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1200&auto=format&fit=crop'); }
+        .hl-slide:nth-child(3) .slide-bg { background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop'); }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(11, 30, 54, 0.95) 0%, rgba(11, 30, 54, 0.82) 100%);
+            z-index: 2;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 60px 40px;
+            color: #ffffff;
+        }
+
+        .slide-text {
+            flex: 1 1 500px;
+            max-width: 600px;
+        }
+
+        .slide-small-title {
+            background: rgba(2, 132, 199, 0.2);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .slide-big-title {
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1.4;
+            margin: 0 0 15px 0;
+            color: #ffffff;
+        }
+
+        .title-highlight {
+            color: #38bdf8;
+        }
+
+        .slide-desc {
+            font-size: 15px;
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .slide-btns {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-main {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 14.5px;
+            box-shadow: 0 5px 15px rgba(2, 132, 199, 0.2);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(2, 132, 199, 0.4);
+        }
+
+        .slide-image-wrapper {
+            flex: 1 1 350px;
+            text-align: center;
+            position: relative;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-img {
+            width: 100%;
+            max-width: 440px;
+            height: 270px;
+            object-fit: cover;
+            border-radius: 20px;
+            position: relative;
+            z-index: 5;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .main-img:hover {
+            transform: scale(1.025);
+        }
+
+        .floating-badge {
+            position: absolute;
+            z-index: 6;
+            background: rgba(15, 23, 42, 0.88);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #ffffff;
+            padding: 9px 18px;
+            border-radius: 14px;
+            font-size: 12.5px;
+            font-weight: 700;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+            animation: float_badge 4s infinite ease-in-out;
+        }
+
+        .badge-top { top: -12px; right: 8px; animation-delay: 0s; }
+        .badge-bottom { bottom: -12px; left: 8px; animation-delay: 2s; }
+
+        @keyframes hl_slide_animation {
+            0%, 30%, 100% { transform: translateX(0%); }
+            35%, 65% { transform: translateX(33.33%); }
+            70%, 95% { transform: translateX(66.66%); }
+        }
+
+        @keyframes float_badge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        @media (max-width: 768px) {
+            .hl-slides-wrapper {
+                animation: hl_slide_animation_mob 20s infinite ease-in-out;
+            }
+
+            .slide-content {
+                flex-direction: column-reverse;
+                padding: 40px 20px;
+                text-align: center;
+            }
+
+            .slide-big-title { font-size: 24px; }
+            .slide-btns { justify-content: center; }
+
+            @keyframes hl_slide_animation_mob {
+                0%, 30%, 100% { transform: translateX(0%); }
+                35%, 65% { transform: translateX(33.33%); }
+                70%, 95% { transform: translateX(66.66%); }
+            }
+        }
     </style>
 </head>
 <body>
@@ -252,8 +451,73 @@
         <section id="ux" class="page-section">
             <div class="hero">
                 <h1>تحسين تجربة المستخدم الهيكلية (On-Page UX)</h1>
-                <p>تحويل الصفحات إلى واجهات تفاعلية مريحة مجهزة بـ Dynamic Cards لرفع نسب التحويل.</p>
+                <p>تحويل الصفحات إلى واجهات تفاعلية مريحة مجهزة بـ Dynamic Cards وسلايدرات تفاعلية لرفع نسب التحويل.</p>
             </div>
+
+            <!-- Happy Life Countries Category Pure HTML/CSS Slider -->
+            <div class="hl-slider-container">
+                <div class="hl-slides-wrapper">
+
+                    <!-- الشريحة الأولى -->
+                    <div class="hl-slide">
+                        <div class="slide-bg"></div>
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <span class="slide-small-title">مجموعة هابي لايف التعليمية</span>
+                                <h2 class="slide-big-title">دراسة الإنجليزية بالخارج أصبحت أسهل وأكثر <span class="title-highlight">احترافية.</span></h2>
+                                <p class="slide-desc" style="margin-bottom: 0;">كان من الصعب دراسة الإنجليزية في الخارج بشكل احترافي من قبل، ولكن بعد عام 2008 وإنشاء مجموعة هابي لايف، أصبح الأمر سهلاً للكثيرين؛ ليس فقط للدراسة، بل للالتحاق بأفضل معاهد اللغة الإنجليزية مع تنوع الوجهات بما يناسب جميع الأذواق والحفاظ على أعلى جودة تعليم.</p>
+                            </div>
+                            <div class="slide-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" alt="أفضل معاهد اللغة بالخارج" class="main-img" />
+                                <div class="floating-badge badge-top">أفضل معاهد اللغة</div>
+                                <div class="floating-badge badge-bottom">خبرة من 2008</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الشريحة الثانية -->
+                    <div class="hl-slide">
+                        <div class="slide-bg"></div>
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <span class="slide-small-title">دراسة اللغة الإنجليزية في بريطانيا</span>
+                                <h2 class="slide-big-title">تجربة تعليمية متكاملة تضمن لك <span class="title-highlight">الراحة والتركيز.</span></h2>
+                                <p class="slide-desc" style="margin-bottom: 0;">فنحن لا نقدم مجرد دورات لغة، بل نصمم لك تجربة متكاملة تتضمن دورة انجليزي في بريطانيا، خيارات السكن، والتقديم لاختبار IELTS، مع تذاكر الطيران، لنوفر عليك عناء التفكير وتصب تركيزك كاملاً على دراستك ونجاحك.</p>
+                            </div>
+                            <div class="slide-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800&auto=format&fit=crop" alt="دراسة اللغة في بريطانيا" class="main-img" />
+                                <div class="floating-badge badge-top">وجهات بريطانيا</div>
+                                <div class="floating-badge badge-bottom">تأهيل لاختبار IELTS</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- الشريحة الثالثة -->
+                    <div class="hl-slide">
+                        <div class="slide-bg"></div>
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <div class="slide-text">
+                                <span class="slide-small-title">وجهات ومعاهد بريطانيا</span>
+                                <h2 class="slide-big-title">استكشف مميزات دراسة الإنجليزي في <span class="title-highlight">بريطانيا.</span></h2>
+                                <p class="slide-desc">تعرف على أشهر معاهد اللغة الإنجليزية في بريطانيا متعددة الوجهات، وتصفح كافة الخيارات المتاحة لتختار الدورة المناسبة لطموحك التعليمي والمستقبلي.</p>
+                                <div class="slide-btns">
+                                    <a href="https://api.whatsapp.com/send/?phone=966920027373" target="_blank" class="btn-main">استشارة مجانية عبر الواتساب</a>
+                                </div>
+                            </div>
+                            <div class="slide-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" alt="معاهد بريطانيا المعتمدة" class="main-img" />
+                                <div class="floating-badge badge-top">سكن وتذاكر طيران</div>
+                                <div class="floating-badge badge-bottom">معاهد معتمدة</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
             <div class="grid">
                 <div class="card">
                     <div class="card-header">
