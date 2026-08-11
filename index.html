@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>صابرين مختار | Senior SEO, GEO, LLM & UX Specialist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -164,10 +164,9 @@
             margin-top: 50px;
         }
 
-        /* --- HL SLIDER STYLES --- */
+        /* --- ANIMATED HL SLIDER (COMPATIBLE WITH GITHUB PAGES) --- */
         .hl-slider-container {
             direction: rtl;
-            font-family: system-ui, -apple-system, sans-serif;
             max-width: 1200px;
             margin: 30px auto;
             border-radius: 24px;
@@ -175,17 +174,19 @@
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             background: #0b1e36;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .hl-slides-wrapper {
             display: flex;
             width: 300%;
             height: auto;
-            animation: hl_slide_animation 20s infinite ease-in-out;
+            animation: hl_slide_animation 18s infinite cubic-bezier(0.77, 0, 0.175, 1);
         }
 
         .hl-slide {
-            width: 100%;
+            width: 33.3333%;
+            flex-shrink: 0;
             position: relative;
             overflow: hidden;
         }
@@ -305,11 +306,6 @@
             z-index: 5;
             box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
             border: 1px solid rgba(255, 255, 255, 0.12);
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .main-img:hover {
-            transform: scale(1.025);
         }
 
         .floating-badge {
@@ -331,10 +327,12 @@
         .badge-top { top: -12px; right: 8px; animation-delay: 0s; }
         .badge-bottom { bottom: -12px; left: 8px; animation-delay: 2s; }
 
+        /* حركة التمرير الموجهة بالكامل للغة العربية (RTL) */
         @keyframes hl_slide_animation {
-            0%, 30%, 100% { transform: translateX(0%); }
-            35%, 65% { transform: translateX(33.33%); }
-            70%, 95% { transform: translateX(66.66%); }
+            0%, 28% { transform: translateX(0%); }
+            33%, 61% { transform: translateX(33.3333%); }
+            66%, 94% { transform: translateX(66.6666%); }
+            100% { transform: translateX(0%); }
         }
 
         @keyframes float_badge {
@@ -343,10 +341,6 @@
         }
 
         @media (max-width: 768px) {
-            .hl-slides-wrapper {
-                animation: hl_slide_animation_mob 20s infinite ease-in-out;
-            }
-
             .slide-content {
                 flex-direction: column-reverse;
                 padding: 40px 20px;
@@ -355,12 +349,6 @@
 
             .slide-big-title { font-size: 24px; }
             .slide-btns { justify-content: center; }
-
-            @keyframes hl_slide_animation_mob {
-                0%, 30%, 100% { transform: translateX(0%); }
-                35%, 65% { transform: translateX(33.33%); }
-                70%, 95% { transform: translateX(66.66%); }
-            }
         }
     </style>
 </head>
@@ -454,7 +442,7 @@
                 <p>تحويل الصفحات إلى واجهات تفاعلية مريحة مجهزة بـ Dynamic Cards وسلايدرات تفاعلية لرفع نسب التحويل.</p>
             </div>
 
-            <!-- Happy Life Countries Category Pure HTML/CSS Slider -->
+            <!-- ANIMATED SLIDER SECTION -->
             <div class="hl-slider-container">
                 <div class="hl-slides-wrapper">
 
@@ -464,14 +452,14 @@
                         <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <div class="slide-text">
-                                <span class="slide-small-title">مجموعة هابي لايف التعليمية</span>
-                                <h2 class="slide-big-title">دراسة الإنجليزية بالخارج أصبحت أسهل وأكثر <span class="title-highlight">احترافية.</span></h2>
-                                <p class="slide-desc" style="margin-bottom: 0;">كان من الصعب دراسة الإنجليزية في الخارج بشكل احترافي من قبل، ولكن بعد عام 2008 وإنشاء مجموعة هابي لايف، أصبح الأمر سهلاً للكثيرين؛ ليس فقط للدراسة، بل للالتحاق بأفضل معاهد اللغة الإنجليزية مع تنوع الوجهات بما يناسب جميع الأذواق والحفاظ على أعلى جودة تعليم.</p>
+                                <span class="slide-small-title">تنوع الوجهات العالمية</span>
+                                <h2 class="slide-big-title">اختر وجهتك المفضلة من بين أفضل المعاهد المعتمدة <span class="title-highlight">حول العالم.</span></h2>
+                                <p class="slide-desc" style="margin-bottom: 0;">سواء كنت تطمح للدراسة في بريطانيا، أمريكا، أو كندا، نوفر لك خيارات متنوعة تناسب جميع الأهداف والأذواق مع ضمان أعلى مستويات جودة التعليم.</p>
                             </div>
                             <div class="slide-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" alt="أفضل معاهد اللغة بالخارج" class="main-img" />
-                                <div class="floating-badge badge-top">أفضل معاهد اللغة</div>
-                                <div class="floating-badge badge-bottom">خبرة من 2008</div>
+                                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" alt="أفضل المعاهد المعتمدة" class="main-img" />
+                                <div class="floating-badge badge-top">بريطانيا، أمريكا، كندا</div>
+                                <div class="floating-badge badge-bottom">✈ معاهد معتمدة دولياً</div>
                             </div>
                         </div>
                     </div>
@@ -482,14 +470,14 @@
                         <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <div class="slide-text">
-                                <span class="slide-small-title">دراسة اللغة الإنجليزية في بريطانيا</span>
-                                <h2 class="slide-big-title">تجربة تعليمية متكاملة تضمن لك <span class="title-highlight">الراحة والتركيز.</span></h2>
-                                <p class="slide-desc" style="margin-bottom: 0;">فنحن لا نقدم مجرد دورات لغة، بل نصمم لك تجربة متكاملة تتضمن دورة انجليزي في بريطانيا، خيارات السكن، والتقديم لاختبار IELTS، مع تذاكر الطيران، لنوفر عليك عناء التفكير وتصب تركيزك كاملاً على دراستك ونجاحك.</p>
+                                <span class="slide-small-title">مجموعة هابي لايف التعليمية</span>
+                                <h2 class="slide-big-title">دراسة الإنجليزية بالخارج أصبحت أسهل وأكثر <span class="title-highlight">احترافية.</span></h2>
+                                <p class="slide-desc" style="margin-bottom: 0;">كان من الصعب دراسة الإنجليزية في الخارج بشكل احترافي من قبل، ولكن بعد عام 2008 وإنشاء مجموعة هابي لايف، أصبح الأمر سهلاً للكثيرين للالتحاق بأفضل معاهد اللغة الإنجليزية مع تنوع الوجهات الحفاظ على أعلى جودة تعليم.</p>
                             </div>
                             <div class="slide-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800&auto=format&fit=crop" alt="دراسة اللغة في بريطانيا" class="main-img" />
-                                <div class="floating-badge badge-top">وجهات بريطانيا</div>
-                                <div class="floating-badge badge-bottom">تأهيل لاختبار IELTS</div>
+                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=800&auto=format&fit=crop" alt="أفضل معاهد اللغة بالخارج" class="main-img" />
+                                <div class="floating-badge badge-top">أفضل معاهد اللغة</div>
+                                <div class="floating-badge badge-bottom">خبرة من 2008</div>
                             </div>
                         </div>
                     </div>
@@ -500,17 +488,17 @@
                         <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <div class="slide-text">
-                                <span class="slide-small-title">وجهات ومعاهد بريطانيا</span>
-                                <h2 class="slide-big-title">استكشف مميزات دراسة الإنجليزي في <span class="title-highlight">بريطانيا.</span></h2>
-                                <p class="slide-desc">تعرف على أشهر معاهد اللغة الإنجليزية في بريطانيا متعددة الوجهات، وتصفح كافة الخيارات المتاحة لتختار الدورة المناسبة لطموحك التعليمي والمستقبلي.</p>
+                                <span class="slide-small-title">دراسة اللغة الإنجليزية في بريطانيا</span>
+                                <h2 class="slide-big-title">تجربة تعليمية متكاملة تضمن لك <span class="title-highlight">الراحة والتركيز.</span></h2>
+                                <p class="slide-desc">نصمم لك تجربة متكاملة تتضمن دورة انجليزي في بريطانيا، خيارات السكن، والتقديم لاختبار IELTS، مع تذاكر الطيران، لنوفر عليك عناء التفكير لتصب تركيزك كاملاً على دراستك.</p>
                                 <div class="slide-btns">
                                     <a href="https://api.whatsapp.com/send/?phone=966920027373" target="_blank" class="btn-main">استشارة مجانية عبر الواتساب</a>
                                 </div>
                             </div>
                             <div class="slide-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" alt="معاهد بريطانيا المعتمدة" class="main-img" />
-                                <div class="floating-badge badge-top">سكن وتذاكر طيران</div>
-                                <div class="floating-badge badge-bottom">معاهد معتمدة</div>
+                                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=800&auto=format&fit=crop" alt="دراسة اللغة في بريطانيا" class="main-img" />
+                                <div class="floating-badge badge-top">وجهات بريطانيا</div>
+                                <div class="floating-badge badge-bottom">تأهيل لاختبار IELTS</div>
                             </div>
                         </div>
                     </div>
@@ -524,7 +512,7 @@
                         <i class="fa-solid fa-layer-group"></i>
                         <h2>إعادة هيكلة الصفحات (Visual Hierarchy)</h2>
                     </div>
-                    <p>تطبيق أسلوب البطاقات الديناميكية وتقسيم المحتوى إلى كتل معلوماتية.</p>
+                    <p>تطبيق أسلوب البطاقات وتقسيم المحتوى إلى كتل معلوماتية لتسهيل القراءة وزيادة التفاعل.</p>
                     <img src="ux.png.png" alt="تحسين تجربة المستخدم" class="portfolio-img">
                 </div>
             </div>
